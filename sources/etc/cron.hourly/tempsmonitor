@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import MySQLdb
+from subprocess import Popen, PIPE
+
+def readTemp():
+
+	temp = "0.0"
+	fullCMD = "sudo /usr/local/temperature.py"
+
+	try:
+		process = Popen([fullCMD], stdout=PIPE, shell=True)
+		stdout, stderr = process.communicate()
+		temp = stdout.rstrip()
+		if stderr is not None:
+			print "STDERR: %s" %(stderr)
+	except Exception as e:
+		print("Error: %s" %(e))
+
+	return (temp)
+
+if __name__ == '__main__':
+
+	db = MySQLdb.connect("localhost", "monitor", "gigiduru", "temps")
+	curs=db.cursor()
+
+	temp = readTemp()
+	dbline = "INSERT INTO tempdata values(CURRENT_DATE(), NOW(), \"" + temp + "\")"
+
+	with db:
+		curs.execute (dbline)
+	db.close()

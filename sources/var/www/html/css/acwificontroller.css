@@ -1,0 +1,19 @@
+.state-on {
+	color:green;
+}
+
+.state-off {
+	color:red;
+}
+
+.login-container{
+	background-color:#3b5998;
+	padding: 5px;
+}
+
+.disabled {
+    z-index: 1000;
+    background-color: lightgrey;
+    opacity: 0.6;
+    pointer-events: none;
+}
