@@ -1,0 +1,26 @@
+.state-on {
+	color:green;
+}
+
+.state-off {
+	color:red;
+}
+
+.login-container{
+	background-color:#3b5998;
+	padding: 5px;
+}
+
+.disabled {
+    z-index: 1000;
+    background-color: lightgrey;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.spinner {
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../img/spinner.gif') 
+                50% 50% 
+                no-repeat;
+}

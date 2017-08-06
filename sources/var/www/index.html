@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wifi AC Controller</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-toggle.min.css" media="screen">
+        <link type="text/css" rel="stylesheet" href="css/acwificontroller.css" media="screen">
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
+        <script type="text/javascript" src="js/acwificontroller.js"></script>
+    </head> 
+			<!-- <input type="checkbox" data-toggle="toggle" data-on="Start" data-off="Stop" data-onstyle="success" data-offstyle="danger"> -->
+                           <!-- <div class="col-sm-offset-4 col-sm-2"> -->
+                                <!-- <div class="input-group"> -->
+                                    <!-- <input id="autotime" type="text" class="form-control" placeholder="Hours"> -->
+                                    <!-- <div class="input-group-btn"> -->
+                                        <!-- <button value="auto" type="button" class="btn btn-info disabled">Auto</button> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                                <!-- <input type="checkbox" data-toggle="toggle" data-on="Start" data-off="Stop" data-onstyle="success" data-offstyle="danger"> -->
+                            <!-- </div> -->
+						<!--<div class="row">
+							<div id="status" class="btn-group" style="margin-top: 15px; padding: 0px;">
+								<button value="on" type="button" class="btn btn-lg btn-success">On</button>
+								<button value="auto" type="button" class="btn btn-lg btn-info">Auto</button>
+								<button value="off" type="button" class="btn btn-lg btn-danger">Off</button>
+							</div>
+						</div> -->
+  <body>
+    <div class="container-fluid">
+		<!--<div class="row login-container hidden">-->
+		<div id="auth" class="row login-container">
+			<div class="input-group col-sm-offset-9 col-xs-offset-2">
+				<input id="password" type="password" class="form-control" style="font-size: 16px;" placeholder="Password">
+				<div class="input-group-btn">
+					<button id="login" type="button" class="btn btn-success" disabled="disabled">Conectează-te</button>
+				</div>
+            </div>
+		</div>
+		<div id="content" class="row panel panel-default disabled">
+			<div class="text-center">
+				<!--<div class="" style="margin-top: 15px; padding: 0px;">-->
+					<h1 class="text-center">AC Wifi Controller</h1>
+					<div class="panel-body">
+						<div class="row">
+                            <h1><span id="now" class="label"> </span></h1>
+						</div>
+ 						<div class="row">
+                            <div class="col-sm-12" style="margin-top: 15px; padding: 0px;">
+								<button type="submit" id="state" class="btn btn-lg btn-default" style="padding:16" value="on"><span class="glyphicon glyphicon-off state-on" /></button>
+                            </div>
+						</div>
+
+						<div class="row">
+							<div id="fan" class="btn-group" style="margin-top: 15px; padding: 0px;">
+								<button value="0" type="button" class="btn btn-info">Fan 0</button>
+								<button value="1" type="button" class="btn btn-info">Fan 1</button>
+								<button value="2" type="button" class="btn btn-info">Fan 2</button>
+								<button value="3" type="button" class="btn btn-info">Fan 3</button>
+							</div>
+						</div>
+						<div class="row">
+							<div style="margin-top: 5px; padding: 0px;">
+								<h3><span class="label label-default">TEMPERATURE</span></h3>
+								<nav aria-label="Page navigation">
+									<ul class="pagination pagination-sm" style="margin-bottom: 0px; cursor: pointer;">
+										<li value="17"><a>17</a></li>
+										<li value="18"><a>18</a></li>
+										<li value="19"><a>19</a></li>
+										<li value="20"><a>20</a></li>
+										<li value="21"><a>21</a></li>
+										<li value="22"><a>22</a></li>
+										<li value="23"><a>23</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="row">
+							<nav aria-label="Page navigation">
+								<ul class="pagination pagination-sm" style="margin-top: 2px; cursor: pointer;">
+									<li value="24"><a>24</a></li>
+									<li value="25"><a>25</a></li>
+									<li value="26"><a>26</a></li>
+									<li value="27"><a>27</a></li>
+									<li value="28"><a>28</a></li>
+									<li value="29"><a>29</a></li>
+									<li value="30"><a>30</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				<!--</div>-->
+			</div>
+        </div>
+  </body>
+</html>
