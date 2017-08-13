@@ -22,13 +22,15 @@ var webService = 'http:';
 webSocket += "//" + loc.host; webSocket += ":9001/";
 webService += "//" + loc.host; webService += ":8080/acwificontroller";
 
-/*
+console.log(loc.host);
+
 var ws = new WebSocket(webSocket);
 window.onfocus = function () { 
 	console.log("focus") 
-	initWebSocketClient();
+	getInfo();
 };
 
+/*
 window.onblur  = function () { 
 	console.log("onblur") 
 	ws.close();
@@ -99,8 +101,6 @@ function putInfo(value){
 
 	var backend = [webService, 'hvacrtcu'].join('/');
 
-	$(".panel-body").addClass('spinner');
-
 	$.ajax({
 		url: backend.toLowerCase(),
 		type: "PUT",
@@ -108,12 +108,10 @@ function putInfo(value){
 		success: function (data) {
 
 			console.log( "success"+ data );
-			$('.panel-body').removeClass('spinner');
 		},
 		error: function (result) {
 
 			console.log( "Error"+ result );
-			$('.panel-body').removeClass('spinner');
 
 		}
 	});
@@ -123,8 +121,6 @@ function putInfo(value){
 function getInfo() {
 
     var backend = [webService, "hvacrtcu"].join('/');
-
-	//$(".panel-body").addClass('spinner');
 
     $.ajax({
         url: backend.toLowerCase(),
@@ -149,13 +145,11 @@ function getInfo() {
                 console.log("Response not valid" + data);
 
             }
-			//$('.panel-body').removeClass('spinner');
 
         },
         error: function (result) {
 
             console.log( "Error"+ result );
-			//$('.panel-body').removeClass('spinner');
 
         }
     });

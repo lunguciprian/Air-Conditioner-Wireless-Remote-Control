@@ -193,6 +193,43 @@ class HVACRTCU(object):
 #==================================================================================================#
 #================================== Login SECTION =================================================#
 #==================================================================================================#
+class Notify(object):
+
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+    @RCommon.request(web, True)
+    def OPTIONS(self):
+        logger.debug("request from: %s" % (web.ctx.ip))
+        return "'preflighted'"
+
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+    @RCommon.request(web, True)
+    def PUT(self):
+
+        status = True
+
+        data = json.loads(web.data())
+
+        state = data['state']
+        temp = data['temp']
+        fan = data['fan']
+        lirc_key = data['lirc_key']
+
+        logger.debug("received parameters: (%s, %s, %s)" % (state, temp, fan))
+
+        promise = _HVAC_PAYLOAD_TEMPLATE
+        promise["state"] = state
+        promise["fan"] = fan
+        promise['temp']['target'] = temp
+        promise['temp']['now'] = RCommon.temparatureNow()
+
+        websocketServer.server.send_message_to_all(json.dumps(promise))
+        logger.info("Action send_message_to_all %s" % (json.dumps(promise)))
+        RCommon.store(_HVAC_FILE, promise)
+
+        return ("executing action succeeded <%s>" % lirc_key) if state else ("executing action failed <%s>" % lirc_key)
+#==================================================================================================#
+#================================== Login SECTION =================================================#
+#==================================================================================================#
 class Login(object):
 
     @RCommon.request(web, False)
@@ -328,16 +365,11 @@ if __name__ == '__main__':
     logger.setLevel(logging.DEBUG)
     logger.addHandler(handler)
 
-    print "Sa las aerul sa vad daca trece de temperatura setata de mine cu mult sau face el auto singur"
-    print "auto ??? e novoie sau stie AC..."
-    print "Sa fac pagina de temp history"
-    print "se poate docker"
-    print "se node.js si angular ?"
-
     logger.info("##################### WebService started #####################")
     """ urls used by webservice """
     urls    = ( '/acwificontroller/favicon.ico','Favicon',
                 '/acwificontroller/login/(.*)','Login',
+                '/acwificontroller/notify','Notify',
                 '/acwificontroller/hvacrtcu',  'HVACRTCU')
 
     web.config.debug=False
